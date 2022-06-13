@@ -19,6 +19,7 @@ class MyString {
         MyString();
         MyString(const char* str);
         MyString(const MyString& other);
+        MyString& operator = (const MyString& other);
         ~MyString();
 
         unsigned getSize() const;

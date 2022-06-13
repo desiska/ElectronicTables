@@ -31,10 +31,7 @@ MyString::MyString(const char *str) {
 }
 
 MyString::MyString(const MyString &other) {
-    if(this != &other){
-        this->clean();
-        this->copy(other);
-    }
+    this->copy(other);
 }
 
 MyString::~MyString() {
@@ -74,4 +71,11 @@ std::istream &operator>>(std::istream &in, const MyString &str) {
 std::ostream &operator<<(std::ostream out, const MyString &str) {
     out << str.str;
     return out;
+}
+
+MyString &MyString::operator=(const MyString &other) {
+    if(this != &other){
+        this->clean();
+        this->copy(other);
+    }
 }

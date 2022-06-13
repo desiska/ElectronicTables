@@ -3,4 +3,4 @@ project(ElectronicTables)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ElectronicTables main.cpp Commands.cpp Commands.h MyString.h MyString.cpp)
+add_executable(ElectronicTables main.cpp Commands.cpp Commands.h MyString.h MyString.cpp FileManager.h FileManager.cpp Queue.h Queue.cpp)
