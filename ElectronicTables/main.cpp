@@ -3,7 +3,7 @@
 
 int main() {
     Commands cmd;
-    cmd.StartProgram();
+    cmd.startProgram();
 
     return 0;
 }

@@ -3,6 +3,7 @@
 //
 
 #include "MyString.h"
+#include "Queue.h"
 
 #ifndef ELECTRONICTABLES_FILEMANAGER_H
 #define ELECTRONICTABLES_FILEMANAGER_H
@@ -12,8 +13,7 @@
 class FileManager{
     private:
         MyString fileName;
-        unsigned rowsCount;
-        unsigned colsCount;
+
         void copy(const FileManager& other);
         void clean();
 
@@ -23,6 +23,4 @@ class FileManager{
         FileManager(const FileManager& other);
         FileManager& operator = (const FileManager& other);
         ~FileManager();
-
-
 };

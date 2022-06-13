@@ -22,13 +22,13 @@ class Commands{
         Commands& operator = (const Commands& other);
         ~Commands();
 
-        void Open();
-        void Close();
-        void Save();
-        void SaveAs();
-        void Help();
-        void Exit();
-        void Print();
-        void Edit();
-        void StartProgram();
+        void open();
+        void close();
+        void save();
+        void saveAs();
+        void help();
+        void exit();
+        void print();
+        void edit();
+        void startProgram();
 };
