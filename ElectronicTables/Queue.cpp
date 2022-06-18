@@ -2,43 +2,30 @@
 // Created by Laptop_HP on 13.6.2022 г..
 //
 
+#include <iostream>
 #include "Queue.h"
 
-template<typename T>
-void Queue<T>::copy(const Queue<T> &other) {
-    if(other.prev != nullptr){
-        this->prev = new Queue<T>(other.prev->data);
-        this->next = this->prev;
-        Node<T>* curr = other.prev->next;
-        while (curr){
-            this->push(curr->data);
-            curr = curr->next;
-        }
+Queue::Queue() {
+    this->size = 0;
+    this->capacity = 8;
+    this->queue = new Data[this->capacity];
+}
+
+Queue::Queue(Data *queue, unsigned size) {
+    this->queue = queue;
+    this->size = size;
+    this->capacity = 8;
+
+    while(this->size > this->capacity){
+        this->resize();
     }
 }
 
-template<typename T>
-void Queue<T>::clean() {
-    while (this->prev){
-        Node<T>* temp = this->prev;
-        this->prev = prev->next;
-        delete temp;
-    }
-}
-
-template<typename T>
-Queue<T>::Queue() {
-    this->prev = nullptr;
-    this->next = nullptr;
-}
-
-template<typename T>
-Queue<T>::Queue(const Queue<T> &other) {
+Queue::Queue(const Queue &other) {
     this->copy(other);
 }
 
-template<typename T>
-Queue<T> &Queue<T>::operator=(const Queue<T> &other) {
+Queue &Queue::operator=(const Queue &other) {
     if(this != &other){
         this->clean();
         this->copy(other);
@@ -47,34 +34,77 @@ Queue<T> &Queue<T>::operator=(const Queue<T> &other) {
     return *this;
 }
 
-template<typename T>
-Queue<T>::~Queue() {
+Queue::~Queue() {
     this->clean();
 }
 
-template<typename T>
-void Queue<T>::push(T data) {
-    Node<T>* temp = new Node<T>(data);
+void Queue::push(Data data) {
+    if(this->size == this->capacity){
+        this->resize();
+    }
 
-    if(this->next == nullptr){
-        this->prev = this->next = temp;
-    }
-    else{
-        this->next->next = temp;
-        this->next = temp;
-    }
+    this->queue[this->size++] = data;
 }
 
-template<typename T>
-void Queue<T>::pop() {
-    if(this->prev != nullptr){
-        Node<T>* temp = this->prev;
-        this->prev = this->prev->next;
+void Queue::pop() {
+    if(this->size > 0) {
+        Data temp = this->queue[0];
 
-        if(this->prev == nullptr){
-            this->next = nullptr;
+        for (int i = 0; i < this->size - 1; ++i) {
+            this->queue[i] = this->queue[i + 1];
         }
 
-        delete temp;
+        delete &temp;
+        --this->size;
     }
 }
+
+Data Queue::peek() {
+    return this->queue[0];
+}
+
+void Queue::copy(const Queue &other) {
+    this->capacity = other.capacity;
+    this->size = other.size;
+    this->queue = new Data[this->capacity];
+
+    for(int i = 0; i < this->size; ++i){
+        this->queue[i] = other.queue[i];
+    }
+}
+
+void Queue::clean() {
+    for(int i = 0; i < this->size; ++i){
+        delete &this->queue[i];
+    }
+    delete &this->queue;
+}
+
+void Queue::resize() {
+    this->capacity *= 2;
+    Data* temp = new Data[this->capacity];
+
+    for(int i = 0; i < this->size; ++i){
+        temp[i] = this->queue[i];
+    }
+
+    delete this->queue;
+
+    this->queue = temp;
+}
+
+unsigned Queue::getSize() {
+    return this->size;
+}
+
+Data *Queue::getQueue() {
+    return this->queue;
+}
+
+void Queue::print() {
+    for(int i = 0; i < this->size; ++i){
+        std::cout << this->queue[i].getData().toString() << '|';
+    }
+    std::cout << '\n';
+}
+

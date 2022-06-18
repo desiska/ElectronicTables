@@ -1,0 +1,14 @@
+# ninja log v5
+41	1063	6772372321958053	CMakeFiles/ElectronicTables.dir/Queue.cpp.obj	3dd767d1e34e5e9
+54	1215	6772372323478106	CMakeFiles/ElectronicTables.dir/Data.cpp.obj	ec41bc6add25250f
+22	1397	6772544720659344	CMakeFiles/ElectronicTables.dir/Data.cpp.obj	ec41bc6add25250f
+11	762	6772547967072234	CMakeFiles/ElectronicTables.dir/Data.cpp.obj	ec41bc6add25250f
+17	786	6772549115828358	CMakeFiles/ElectronicTables.dir/Data.cpp.obj	ec41bc6add25250f
+7	788	6772549115858279	CMakeFiles/ElectronicTables.dir/main.cpp.obj	2022c07ae6ffa87f
+22	805	6772549116017836	CMakeFiles/ElectronicTables.dir/FileManager.cpp.obj	a42500e167641f19
+7	700	6772549517212992	CMakeFiles/ElectronicTables.dir/main.cpp.obj	2022c07ae6ffa87f
+11	722	6772549517452350	CMakeFiles/ElectronicTables.dir/FileManager.cpp.obj	a42500e167641f19
+0	728	6772552963192887	CMakeFiles/ElectronicTables.dir/Commands.cpp.obj	7d191ec34aa110b7
+5	720	6772556753421145	CMakeFiles/ElectronicTables.dir/Queue.cpp.obj	3dd767d1e34e5e9
+1	674	6772556957911004	CMakeFiles/ElectronicTables.dir/MyString.cpp.obj	95364524da2ab717
+675	1813	6772556968308161	ElectronicTables.exe	639c657b08578094

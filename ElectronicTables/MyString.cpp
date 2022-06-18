@@ -78,4 +78,10 @@ MyString &MyString::operator=(const MyString &other) {
         this->clean();
         this->copy(other);
     }
+
+    return *this;
+}
+
+char *MyString::toString() {
+    return this->str;
 }

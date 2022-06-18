@@ -22,13 +22,14 @@ class Commands{
         Commands& operator = (const Commands& other);
         ~Commands();
 
-        void open();
+        void open(MyString fileName);
         void close();
         void save();
-        void saveAs();
+        void saveAs(MyString newFileName);
         void help();
         void exit();
         void print();
-        void edit();
+        void edit(unsigned row, unsigned col, MyString newData);
         void startProgram();
+        void program();
 };

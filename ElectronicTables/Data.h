@@ -3,11 +3,10 @@
 //
 
 #include "MyString.h"
+#include<fstream>
 
 #ifndef ELECTRONICTABLES_HASHTABLE_H
 #define ELECTRONICTABLES_HASHTABLE_H
-
-#endif //ELECTRONICTABLES_HASHTABLE_H
 
 
 class Data{
@@ -23,4 +22,11 @@ class Data{
         Data(const Data& other);
         Data& operator = (const Data& other);
         ~Data();
+
+        MyString getData();
+        MyString getType();
+        void setData(MyString data);
+        void setType(MyString type);
 };
+
+#endif //ELECTRONICTABLES_HASHTABLE_H

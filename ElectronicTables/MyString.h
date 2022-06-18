@@ -7,8 +7,6 @@
 #ifndef ELECTRONICTABLES_MYSTRING_H
 #define ELECTRONICTABLES_MYSTRING_H
 
-#endif //ELECTRONICTABLES_MYSTRING_H
-
 class MyString {
     private:
         char* str;
@@ -26,7 +24,10 @@ class MyString {
         void print() const;
         void add(const char* str);
         MyString operator + (const MyString& other);
+        char* toString();
 
         friend std::istream& operator >> (std::istream& in, const MyString& str);
         friend std::ostream& operator << (std::ostream out, const MyString& str);
 };
+
+#endif //ELECTRONICTABLES_MYSTRING_H

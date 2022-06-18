@@ -42,3 +42,19 @@ Data &Data::operator=(const Data &other){
 Data::~Data() {
     this->clean();
 }
+
+MyString Data::getData() {
+    return this->data;
+}
+
+MyString Data::getType() {
+    return this->type;
+}
+
+void Data::setData(MyString data) {
+    this->data = data;
+}
+
+void Data::setType(MyString type) {
+    this->type = type;
+}
