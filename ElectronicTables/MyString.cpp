@@ -6,16 +6,17 @@
 #include<iostream>
 
 void MyString::copy(const MyString &other) {
-    this->str = new char[other.getSize()];
+    this->str = new char[other.getSize() + 1];
 
     for(int i = 0; other.str[i] != '\0'; ++i){
         this->str[i] = other.str[i];
     }
-    this->str[other.getSize() - 1] = '\0';
+    this->str[other.getSize()] = '\0';
 }
 
 void MyString::clean() {
     delete[] this->str;
+    this->str = nullptr;
 }
 
 MyString::MyString() {
@@ -24,10 +25,11 @@ MyString::MyString() {
 }
 
 MyString::MyString(const char *str) {
+    this->str = new char[strlen(str) + 1];
     for(int i = 0; str[i] != '\0'; ++i){
         this->str[i] = str[i];
     }
-    this->str[strlen(str) - 1] = '\0';
+    this->str[strlen(str)] = '\0';
 }
 
 MyString::MyString(const MyString &other) {
@@ -85,3 +87,8 @@ MyString &MyString::operator=(const MyString &other) {
 char *MyString::toString() {
     return this->str;
 }
+
+bool MyString::isEmpty() const {
+    return this->getSize() == 0;
+}
+

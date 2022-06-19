@@ -75,9 +75,10 @@ void Queue::copy(const Queue &other) {
 
 void Queue::clean() {
     for(int i = 0; i < this->size; ++i){
-        delete &this->queue[i];
+        this->queue[i].~Data();
     }
-    delete &this->queue;
+
+    this->queue->~Data();
 }
 
 void Queue::resize() {

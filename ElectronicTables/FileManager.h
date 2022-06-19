@@ -23,7 +23,7 @@ class FileManager{
 
     public:
         FileManager();
-        FileManager(MyString fileName);
+        FileManager(MyString& fileName);
         FileManager(const FileManager& other);
         FileManager& operator = (const FileManager& other);
         ~FileManager();

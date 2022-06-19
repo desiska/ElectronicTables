@@ -37,21 +37,10 @@ Commands::~Commands() {
 }
 
 void Commands::open(MyString fileName) {
-    this->manager = FileManager(fileName);
+    FileManager newManager = FileManager(fileName);
+    this->manager = newManager;
 
-    std::ofstream out;
-    out.open(fileName.toString());
-
-    if(!out){
-        std::cout << "There is a mistake with URL of table!\n";
-    }
-    out.close();
-}
-
-void Commands::close() {
-    if(this->manager.getFileName().toString() != nullptr){
-        delete &manager;
-    }
+    this->manager.read();
 }
 
 void Commands::save() {
@@ -79,77 +68,101 @@ void Commands::help() {
 
 }
 
-void Commands::exit() {
-
-}
-
 void Commands::print() {
     this->manager.print();
 }
 
-void Commands::edit(unsigned int row, unsigned int col, MyString newData) {
-    if(!this->manager.edit(row, col, newData)){
+bool Commands::edit(unsigned int row, unsigned int col, MyString newData) {
+    bool result = this->manager.edit(row, col, newData);
+    if(!result){
         std::cout << "There is an error with the data you submitted!\n";
     }
-}
 
-void Commands::program() {
-    std::cout <<"\n\t      ------WELCOME TO DATABASE MANAGEMENT SYSTEM------\n\n"
-         << "********************************************************************************\n"
-         << "********************************************************************************\n"
-         << "***  1- Open Database                                                        ***\n"
-         << "***  2- Edit Data                                                            ***\n"
-         << "***  3- Save Data                                                            ***\n"
-         << "***  4- SaveAs on Data                                                       ***\n"
-         << "***  5- Print Data                                                           ***\n"
-         << "***  6- Help                                                                 ***\n"
-         << "***  7- Close                                                                ***\n"
-         << "***  8- Exit                                                                 ***\n"
-         << "********************************************************************************\n"
-         << "********************************************************************************\n";
-
-    std:: cout << "  Enter your choice: \n";
-    int choose;
-    std::cin >> choose;
-
-    switch (choose) {
-        case 1:
-
-            break;
-
-        case 2:
-            break;
-
-        case 3:
-            break;
-
-        case 4:
-            break;
-
-        case 5:
-            break;
-
-        case 6:
-            break;
-
-        case 7:
-            break;
-
-        case 8:
-            break;
-    }
-
-
-
+    return result;
 }
 
 void Commands::startProgram() {
-    std::cout <<"\n\t      ------WELCOME TO DATABASE MANAGEMENT SYSTEM------                           \n\n"
-        << "Enter a URL Table: ";
-
+    int choose = 8;
+    bool canExit = true;
     MyString fileName;
-    std::cin >> fileName;
 
-    this->open(fileName);
-    this->program();
+    do {
+        std::cout << "\n\t      ------WELCOME TO DATABASE MANAGEMENT SYSTEM------\n\n"
+                  << "********************************************************************************\n"
+                  << "********************************************************************************\n"
+                  << "***  1- Open Database                                                        ***\n"
+                  << "***  2- Edit Data                                                            ***\n"
+                  << "***  3- Save Data                                                            ***\n"
+                  << "***  4- SaveAs on Data                                                       ***\n"
+                  << "***  5- Print Data                                                           ***\n"
+                  << "***  6- Help                                                                 ***\n"
+                  << "***  7- Close                                                                ***\n"
+                  << "***  8- Exit                                                                 ***\n"
+                  << "********************************************************************************\n"
+                  << "********************************************************************************\n";
+
+        std::cout << "  Enter your choice: \n";
+        std::cin >> choose;
+
+        if(choose == 1){
+            if(fileName.isEmpty()) {
+                std::cout << "Enter an URL of Table: ";
+                std::cin >> fileName;
+                this->open(fileName);
+            }
+            else{
+                std::cout << "There is a open file! Please close first this file!\n";
+            }
+        }
+
+        if (fileName.isEmpty()) {
+            std::cout << "There is not a open file! Please first open file!\n";
+        }
+        else {
+            switch (choose) {
+                case 2:
+                {
+                    std::cout << "Enter a <row> <col> <new value>: ";
+                    int row, col;
+                    MyString input;
+                    std::cin >> row >> col >> input;
+                    canExit = !this->edit(row, col, input);
+                }
+                    break;
+
+                case 3:
+                    this->save();
+                    canExit = true;
+                    break;
+
+                case 4:
+                {
+                    std::cout << "Enter a file URL: ";
+                    MyString input;
+                    std::cin >> input;
+                    this->saveAs(input);
+                    canExit = true;
+                }
+                    break;
+
+                case 5:
+                    this->print();
+                    break;
+
+                case 6:
+                    this->help();
+                    break;
+
+                case 7:
+                    this->clean();
+                    break;
+
+                case 8:
+                    if(!canExit) {
+                        std::cout << "You have an open file with unsaved changes, please select close or save first!\n";
+                    }
+                    break;
+            }
+        }
+    } while (choose != 8 || !canExit);
 }

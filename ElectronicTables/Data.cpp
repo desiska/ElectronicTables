@@ -11,14 +11,12 @@ void Data::copy(const Data &other) {
 }
 
 void Data::clean() {
-    delete &this->type, &this->data;
-    this->type = nullptr;
-    this->data = nullptr;
+    this->data.~MyString();
+    this->type.~MyString();
 }
 
 Data::Data() {
-    this->data = nullptr;
-    this->type = nullptr;
+
 }
 
 Data::Data(MyString data, MyString type) {

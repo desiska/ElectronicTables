@@ -25,6 +25,7 @@ class MyString {
         void add(const char* str);
         MyString operator + (const MyString& other);
         char* toString();
+        bool isEmpty()const;
 
         friend std::istream& operator >> (std::istream& in, const MyString& str);
         friend std::ostream& operator << (std::ostream out, const MyString& str);

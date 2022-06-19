@@ -7,8 +7,6 @@
 #ifndef ELECTRONICTABLES_COMMANDS_H
 #define ELECTRONICTABLES_COMMANDS_H
 
-#endif //ELECTRONICTABLES_COMMANDS_H
-
 class Commands{
     private:
         FileManager manager;
@@ -23,13 +21,12 @@ class Commands{
         ~Commands();
 
         void open(MyString fileName);
-        void close();
         void save();
         void saveAs(MyString newFileName);
         void help();
-        void exit();
         void print();
-        void edit(unsigned row, unsigned col, MyString newData);
+        bool edit(unsigned row, unsigned col, MyString newData);
         void startProgram();
-        void program();
 };
+
+#endif //ELECTRONICTABLES_COMMANDS_H

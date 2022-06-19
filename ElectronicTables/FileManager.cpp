@@ -11,23 +11,22 @@ void FileManager::copy(const FileManager &other) {
 }
 
 void FileManager::clean() {
-    delete &this->fileName;
+    this->fileName.~MyString();
 
-    for(int i = 0; i < this->count; ++i){
-        delete &this->queue[i];
+    for(int i = 0; i < this->capacity; ++i){
+        this->queue[i].~Queue();
     }
 
-    delete this->queue;
+    this->queue->~Queue();
 }
 
 FileManager::FileManager() {
-    this->fileName = nullptr;
     this->count = 0;
     this->capacity = 8;
     this->queue = new Queue[this->capacity];
 }
 
-FileManager::FileManager(MyString fileName) {
+FileManager::FileManager(MyString& fileName) {
     this->fileName = fileName;
     this->count = 0;
     this->capacity = 8;
@@ -116,89 +115,89 @@ bool FileManager::edit(unsigned row, unsigned col, MyString newData) {
 void FileManager::read() {
     std::ifstream in;
     in.open(this->fileName.toString());
-    if(in){
-        while(!in.eof()) {
-            char *input;
-            in >> input;
-            unsigned cols = 0;
+    if (in) {
+        while (!in.eof()) {
+            char input[2048];
+            in.getline(input, 2048);
+            unsigned cols = 1;
 
-            for(int i = 0; input[i] != '\0'; ++i){
-                if(input[i] == ','){
+            for (int i = 0; input[i] != '\0'; ++i) {
+                if (input[i] == ',') {
                     cols++;
                 }
             }
 
             Data *temp = new Data[cols];
             cols = 0;
-            bool startQuоte = true;
-            char* string = new char[strlen(input)];
             unsigned symbolsCount = 0;
             unsigned type = 0;
 
-            for(int i = 0; input[i] != '\0'; ++i){
-                if(input[i] == ' ' && !startQuоte){
-                    string[symbolsCount++] = input[i];
-                }
-                else if(input[i] == '\"'){
-                    if(startQuоte){
-                        startQuоte = false;
+            for (int i = 0; input[i] != '\0'; ++i) {
+                char string[2048];
+
+                if (type == 0) {
+                    if (input[i] == '\"') {
                         type = 1;
+                    } else if (input[i] >= '0' && input[i] <= '9') {
+                        type = 2;
+                    } else if (input[i] == '=') {
+                        type = 4;
+                    }
+                }
+
+                if (input[i] != ' ') {
+                    if (input[i] == '.' && type == 2) {
+                        type = 3;
+                        string[symbolsCount++] = input[i];
+                    }
+                    else if (input[i] == ',' || input[i + 1] == '\0') {
+                        if(input[i + 1] == '\0'){
+                            string[symbolsCount++] = input[i];
+                        }
+
+                        char *newString = new char[symbolsCount + 1];
+
+                        for (int s = 0; s < symbolsCount; ++s) {
+                            newString[s] = string[s];
+                        }
+                        newString[symbolsCount] = '\0';
+
+                        MyString data(newString);
+                        MyString typeData;
+                        switch (type) {
+                            case 1:
+                                typeData.add("CharArray");
+                                break;
+
+                            case 2:
+                                typeData.add("Integer");
+                                break;
+
+                            case 3:
+                                typeData.add("Double");
+                                break;
+
+                            case 4:
+                                typeData.add("Formula");
+                                break;
+                        }
+
+                        Data newData(data, typeData);
+                        temp[cols++] = newData;
+                        type = 0;
+                        symbolsCount = 0;
                     }
                     else{
-                        startQuоte = true;
+                        string[symbolsCount++] = input[i];
                     }
-                    string[symbolsCount++] = input[i];
                 }
-                else if(input[i] >= '0' && input[i] <= '9'){
-                    string[symbolsCount++] = input[i];
-                    type = 2;
-                }
-                else if(input[i] == '.'){
-                    string[symbolsCount++] = input[i];
-                    type = 3;
-                }
-                else if(input[i] == '='){
-                    string[symbolsCount++] = input[i];
-                    type = 4;
-                }
-                else if(input[i] == ','){
-                    strcpy_s(string, symbolsCount, string);
-                    MyString data(string);
-                    MyString typeData;
-                    switch (type) {
-                        case 1:
-                            typeData.add("CharArray");
-                            break;
-
-                        case 2:
-                            typeData.add("Integer");
-                            break;
-
-                        case 3:
-                            typeData.add("Double");
-                            break;
-
-                        case 4:
-                            typeData.add("Formula");
-                            break;
-                    }
-
-                    temp[cols++] = Data(data, typeData);
-                    delete[] string;
-                    string = nullptr;
-                    type = 0;
-                    symbolsCount = 0;
-                }
-                else if(input[i] != ' '){
-                    string[symbolsCount++] = input[i];
+                if (this->count == this->capacity) {
+                    this->resize();
                 }
             }
+            Queue newQueue(temp, cols);
 
-            if(this->count == this->capacity){
-                this->resize();
-            }
-
-            this->queue[this->count++] = Queue(temp, cols);
+            this->queue[this->count++] = newQueue;
         }
     }
     in.close();
