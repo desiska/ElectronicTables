@@ -1,0 +1,248 @@
+\doxysection{File\+Manager.\+cpp}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{comment}{//}}
+\DoxyCodeLine{00002 \textcolor{comment}{// Created by Laptop\_HP on 13.6.2022 г..}}
+\DoxyCodeLine{00003 \textcolor{comment}{//}}
+\DoxyCodeLine{00004 }
+\DoxyCodeLine{00005 \textcolor{preprocessor}{\#include "{}FileManager.h"{}}}
+\DoxyCodeLine{00006 \textcolor{preprocessor}{\#include<fstream>}}
+\DoxyCodeLine{00007 }
+\DoxyCodeLine{00008 \textcolor{comment}{//private method to copy 'other' property}}
+\DoxyCodeLine{00009 \textcolor{keywordtype}{void} FileManager::copy(\textcolor{keyword}{const} FileManager \&other) \{}
+\DoxyCodeLine{00010     this-\/>fileName = other.fileName;}
+\DoxyCodeLine{00011     this-\/>queue = other.queue;}
+\DoxyCodeLine{00012 \}}
+\DoxyCodeLine{00013 }
+\DoxyCodeLine{00014 \textcolor{comment}{//private method to delete the allocated memory}}
+\DoxyCodeLine{00015 \textcolor{keywordtype}{void} FileManager::clean() \{}
+\DoxyCodeLine{00016     this-\/>fileName.\string~MyString();}
+\DoxyCodeLine{00017 }
+\DoxyCodeLine{00018     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < this-\/>capacity; ++i)\{}
+\DoxyCodeLine{00019         this-\/>queue[i].\string~Queue();}
+\DoxyCodeLine{00020     \}}
+\DoxyCodeLine{00021 }
+\DoxyCodeLine{00022     this-\/>queue-\/>\string~Queue();}
+\DoxyCodeLine{00023 \}}
+\DoxyCodeLine{00024 }
+\DoxyCodeLine{00025 \textcolor{comment}{//default constructor}}
+\DoxyCodeLine{00026 FileManager::FileManager() \{}
+\DoxyCodeLine{00027     this-\/>count = 0;}
+\DoxyCodeLine{00028     this-\/>capacity = 8;}
+\DoxyCodeLine{00029     this-\/>queue = \textcolor{keyword}{new} Queue[this-\/>capacity];}
+\DoxyCodeLine{00030 \}}
+\DoxyCodeLine{00031 }
+\DoxyCodeLine{00032 \textcolor{comment}{//constructor with one property(MyString)}}
+\DoxyCodeLine{00033 FileManager::FileManager(MyString\& fileName) \{}
+\DoxyCodeLine{00034     this-\/>fileName = fileName;}
+\DoxyCodeLine{00035     this-\/>count = 0;}
+\DoxyCodeLine{00036     this-\/>capacity = 8;}
+\DoxyCodeLine{00037     this-\/>queue = \textcolor{keyword}{new} Queue[this-\/>capacity];}
+\DoxyCodeLine{00038 \}}
+\DoxyCodeLine{00039 }
+\DoxyCodeLine{00040 \textcolor{comment}{//copy constructor}}
+\DoxyCodeLine{00041 FileManager::FileManager(\textcolor{keyword}{const} FileManager \&other) \{}
+\DoxyCodeLine{00042     this-\/>copy(other);}
+\DoxyCodeLine{00043 \}}
+\DoxyCodeLine{00044 }
+\DoxyCodeLine{00045 \textcolor{comment}{//redefining operator '='}}
+\DoxyCodeLine{00046 \textcolor{comment}{//copy the 'other' object if it is not the same object}}
+\DoxyCodeLine{00047 FileManager \&FileManager::operator=(\textcolor{keyword}{const} FileManager \&other) \{}
+\DoxyCodeLine{00048     \textcolor{keywordflow}{if}(\textcolor{keyword}{this} != \&other)\{}
+\DoxyCodeLine{00049         this-\/>clean();}
+\DoxyCodeLine{00050         this-\/>copy(other);}
+\DoxyCodeLine{00051     \}}
+\DoxyCodeLine{00052 }
+\DoxyCodeLine{00053     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{00054 \}}
+\DoxyCodeLine{00055 }
+\DoxyCodeLine{00056 \textcolor{comment}{//destructor}}
+\DoxyCodeLine{00057 FileManager::\string~FileManager() \{}
+\DoxyCodeLine{00058     this-\/>clean();}
+\DoxyCodeLine{00059 \}}
+\DoxyCodeLine{00060 }
+\DoxyCodeLine{00061 \textcolor{comment}{//return 'fileName'(MyString)}}
+\DoxyCodeLine{00062 MyString FileManager::getFileName()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{00063     \textcolor{keywordflow}{return} this-\/>fileName;}
+\DoxyCodeLine{00064 \}}
+\DoxyCodeLine{00065 }
+\DoxyCodeLine{00066 \textcolor{comment}{//save the datas with the updates in the open file}}
+\DoxyCodeLine{00067 \textcolor{comment}{//invoke method saveAs}}
+\DoxyCodeLine{00068 \textcolor{keywordtype}{void} FileManager::save() \{}
+\DoxyCodeLine{00069     this-\/>saveAs(this-\/>fileName);}
+\DoxyCodeLine{00070 \}}
+\DoxyCodeLine{00071 }
+\DoxyCodeLine{00072 \textcolor{comment}{//argument newFileName is the URL of the file where has to save datas}}
+\DoxyCodeLine{00073 \textcolor{comment}{//save the datas with the updates in the 'newFileName'}}
+\DoxyCodeLine{00074 \textcolor{keywordtype}{void} FileManager::saveAs(MyString\& newFileName) \{}
+\DoxyCodeLine{00075     std::ofstream out;}
+\DoxyCodeLine{00076     out.open(newFileName.toString());}
+\DoxyCodeLine{00077     \textcolor{keywordflow}{if}(out)\{}
+\DoxyCodeLine{00078         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} row = 0; row < this-\/>count; ++row)\{}
+\DoxyCodeLine{00079             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} col = 0; col < this-\/>queue[row].getSize(); ++col)\{}
+\DoxyCodeLine{00080                 out << this-\/>queue[row].getQueue()[col].getData().toString() << \textcolor{charliteral}{'|'};}
+\DoxyCodeLine{00081             \}}
+\DoxyCodeLine{00082             out << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00083         \}}
+\DoxyCodeLine{00084     \}}
+\DoxyCodeLine{00085     out.close();}
+\DoxyCodeLine{00086 \}}
+\DoxyCodeLine{00087 }
+\DoxyCodeLine{00088 \textcolor{comment}{//print on the console data}}
+\DoxyCodeLine{00089 \textcolor{keywordtype}{void} FileManager::print() \{}
+\DoxyCodeLine{00090     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < this-\/>count; ++i)\{}
+\DoxyCodeLine{00091         this-\/>queue[i].print();}
+\DoxyCodeLine{00092     \}}
+\DoxyCodeLine{00093 \}}
+\DoxyCodeLine{00094 }
+\DoxyCodeLine{00095 \textcolor{comment}{//update datas}}
+\DoxyCodeLine{00096 \textcolor{keywordtype}{bool} FileManager::edit(\textcolor{keywordtype}{unsigned} row, \textcolor{keywordtype}{unsigned} col, MyString\& newData) \{}
+\DoxyCodeLine{00097     \textcolor{keywordflow}{if}(this-\/>queue-\/>getSize() < row \&\& this-\/>queue[row -\/ 1].getSize() < col)\{}
+\DoxyCodeLine{00098         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{00099     \}}
+\DoxyCodeLine{00100 }
+\DoxyCodeLine{00101     this-\/>queue[row -\/ 1].getQueue()[col -\/ 1].\string~Data();}
+\DoxyCodeLine{00102 }
+\DoxyCodeLine{00103     \textcolor{keywordflow}{if}(newData.toString()[0] == \textcolor{charliteral}{'='})\{}
+\DoxyCodeLine{00104         Data data(newData, MyString(\textcolor{stringliteral}{"{}Formula"{}}));}
+\DoxyCodeLine{00105         this-\/>queue[row -\/ 1].getQueue()[col -\/ 1] = data;}
+\DoxyCodeLine{00106         data.\string~Data();}
+\DoxyCodeLine{00107     \}}
+\DoxyCodeLine{00108     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (newData.toString()[0] == \textcolor{charliteral}{'\(\backslash\)"{}'})\{}
+\DoxyCodeLine{00109         Data data(newData, MyString(\textcolor{stringliteral}{"{}CharArray"{}}));}
+\DoxyCodeLine{00110         this-\/>queue[row -\/ 1].getQueue()[col -\/ 1] = data;}
+\DoxyCodeLine{00111         data.\string~Data();}
+\DoxyCodeLine{00112     \}}
+\DoxyCodeLine{00113     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00114         \textcolor{keywordtype}{bool} isDouble = \textcolor{keyword}{false};}
+\DoxyCodeLine{00115         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; !isDouble \&\& newData.toString()[i] != \textcolor{charliteral}{'\(\backslash\)0'}; ++i)\{}
+\DoxyCodeLine{00116             \textcolor{keywordflow}{if}(newData.toString()[i] == \textcolor{charliteral}{'.'})\{}
+\DoxyCodeLine{00117                 isDouble = \textcolor{keyword}{true};}
+\DoxyCodeLine{00118             \}}
+\DoxyCodeLine{00119         \}}
+\DoxyCodeLine{00120 }
+\DoxyCodeLine{00121         \textcolor{keywordflow}{if}(isDouble)\{}
+\DoxyCodeLine{00122             Data data(newData, MyString(\textcolor{stringliteral}{"{}Double"{}}));}
+\DoxyCodeLine{00123             this-\/>queue[row -\/ 1].getQueue()[col -\/ 1] = data;}
+\DoxyCodeLine{00124             data.\string~Data();}
+\DoxyCodeLine{00125         \}}
+\DoxyCodeLine{00126         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00127             Data data(newData, MyString(\textcolor{stringliteral}{"{}Integer"{}}));}
+\DoxyCodeLine{00128             this-\/>queue[row -\/ 1].getQueue()[col -\/ 1] = data;}
+\DoxyCodeLine{00129             data.\string~Data();}
+\DoxyCodeLine{00130         \}}
+\DoxyCodeLine{00131     \}}
+\DoxyCodeLine{00132 }
+\DoxyCodeLine{00133     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{00134 \}}
+\DoxyCodeLine{00135 }
+\DoxyCodeLine{00136 \textcolor{comment}{//read the information from file and save them in the application}}
+\DoxyCodeLine{00137 \textcolor{keywordtype}{void} FileManager::read() \{}
+\DoxyCodeLine{00138     std::ifstream in;}
+\DoxyCodeLine{00139     in.open(this-\/>fileName.toString());}
+\DoxyCodeLine{00140     \textcolor{keywordflow}{if} (in) \{}
+\DoxyCodeLine{00141         \textcolor{keywordflow}{while} (!in.eof()) \{}
+\DoxyCodeLine{00142             \textcolor{keywordtype}{char} input[2048];}
+\DoxyCodeLine{00143             in.getline(input, 2048);}
+\DoxyCodeLine{00144             \textcolor{keywordtype}{unsigned} cols = 1;}
+\DoxyCodeLine{00145 }
+\DoxyCodeLine{00146             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; input[i] != \textcolor{charliteral}{'\(\backslash\)0'}; ++i) \{}
+\DoxyCodeLine{00147                 \textcolor{keywordflow}{if} (input[i] == \textcolor{charliteral}{','}) \{}
+\DoxyCodeLine{00148                     cols++;}
+\DoxyCodeLine{00149                 \}}
+\DoxyCodeLine{00150             \}}
+\DoxyCodeLine{00151 }
+\DoxyCodeLine{00152             Data *temp = \textcolor{keyword}{new} Data[cols];}
+\DoxyCodeLine{00153             cols = 0;}
+\DoxyCodeLine{00154             \textcolor{keywordtype}{unsigned} symbolsCount = 0;}
+\DoxyCodeLine{00155             \textcolor{keywordtype}{unsigned} type = 0;}
+\DoxyCodeLine{00156 }
+\DoxyCodeLine{00157             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; input[i] != \textcolor{charliteral}{'\(\backslash\)0'}; ++i) \{}
+\DoxyCodeLine{00158                 \textcolor{keywordtype}{char} \textcolor{keywordtype}{string}[2048];}
+\DoxyCodeLine{00159 }
+\DoxyCodeLine{00160                 \textcolor{keywordflow}{if} (type == 0) \{}
+\DoxyCodeLine{00161                     \textcolor{keywordflow}{if} (input[i] == \textcolor{charliteral}{'\(\backslash\)"{}'}) \{}
+\DoxyCodeLine{00162                         type = 1;}
+\DoxyCodeLine{00163                     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (input[i] >= \textcolor{charliteral}{'0'} \&\& input[i] <= \textcolor{charliteral}{'9'}) \{}
+\DoxyCodeLine{00164                         type = 2;}
+\DoxyCodeLine{00165                     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (input[i] == \textcolor{charliteral}{'='}) \{}
+\DoxyCodeLine{00166                         type = 4;}
+\DoxyCodeLine{00167                     \}}
+\DoxyCodeLine{00168                 \}}
+\DoxyCodeLine{00169 }
+\DoxyCodeLine{00170                 \textcolor{keywordflow}{if} (input[i] != \textcolor{charliteral}{' '}) \{}
+\DoxyCodeLine{00171                     \textcolor{keywordflow}{if} (input[i] == \textcolor{charliteral}{'.'} \&\& type == 2) \{}
+\DoxyCodeLine{00172                         type = 3;}
+\DoxyCodeLine{00173                         \textcolor{keywordtype}{string}[symbolsCount++] = input[i];}
+\DoxyCodeLine{00174                     \}}
+\DoxyCodeLine{00175                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (input[i] == \textcolor{charliteral}{','} || input[i + 1] == \textcolor{charliteral}{'\(\backslash\)0'}) \{}
+\DoxyCodeLine{00176                         \textcolor{keywordflow}{if}(input[i + 1] == \textcolor{charliteral}{'\(\backslash\)0'})\{}
+\DoxyCodeLine{00177                             \textcolor{keywordtype}{string}[symbolsCount++] = input[i];}
+\DoxyCodeLine{00178                         \}}
+\DoxyCodeLine{00179 }
+\DoxyCodeLine{00180                         \textcolor{keywordtype}{char} *newString = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[symbolsCount + 1];}
+\DoxyCodeLine{00181 }
+\DoxyCodeLine{00182                         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} s = 0; s < symbolsCount; ++s) \{}
+\DoxyCodeLine{00183                             newString[s] = \textcolor{keywordtype}{string}[s];}
+\DoxyCodeLine{00184                         \}}
+\DoxyCodeLine{00185                         newString[symbolsCount] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00186 }
+\DoxyCodeLine{00187                         MyString data(newString);}
+\DoxyCodeLine{00188                         MyString typeData;}
+\DoxyCodeLine{00189                         \textcolor{keywordflow}{switch} (type) \{}
+\DoxyCodeLine{00190                             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{00191                                 typeData.add(\textcolor{stringliteral}{"{}CharArray"{}});}
+\DoxyCodeLine{00192                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00193 }
+\DoxyCodeLine{00194                             \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{00195                                 typeData.add(\textcolor{stringliteral}{"{}Integer"{}});}
+\DoxyCodeLine{00196                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00197 }
+\DoxyCodeLine{00198                             \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{00199                                 typeData.add(\textcolor{stringliteral}{"{}Double"{}});}
+\DoxyCodeLine{00200                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00201 }
+\DoxyCodeLine{00202                             \textcolor{keywordflow}{case} 4:}
+\DoxyCodeLine{00203                                 typeData.add(\textcolor{stringliteral}{"{}Formula"{}});}
+\DoxyCodeLine{00204                                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00205                         \}}
+\DoxyCodeLine{00206 }
+\DoxyCodeLine{00207                         Data newData(data, typeData);}
+\DoxyCodeLine{00208                         temp[cols++] = newData;}
+\DoxyCodeLine{00209                         type = 0;}
+\DoxyCodeLine{00210                         symbolsCount = 0;}
+\DoxyCodeLine{00211                     \}}
+\DoxyCodeLine{00212                     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00213                         \textcolor{keywordtype}{string}[symbolsCount++] = input[i];}
+\DoxyCodeLine{00214                     \}}
+\DoxyCodeLine{00215                 \}}
+\DoxyCodeLine{00216                 \textcolor{keywordflow}{if} (this-\/>count == this-\/>capacity) \{}
+\DoxyCodeLine{00217                     this-\/>resize();}
+\DoxyCodeLine{00218                 \}}
+\DoxyCodeLine{00219             \}}
+\DoxyCodeLine{00220             Queue newQueue(temp, cols);}
+\DoxyCodeLine{00221 }
+\DoxyCodeLine{00222             this-\/>queue[this-\/>count++] = newQueue;}
+\DoxyCodeLine{00223         \}}
+\DoxyCodeLine{00224     \}}
+\DoxyCodeLine{00225     in.close();}
+\DoxyCodeLine{00226 \}}
+\DoxyCodeLine{00227 }
+\DoxyCodeLine{00228 \textcolor{comment}{//resized queue(Queue array)}}
+\DoxyCodeLine{00229 \textcolor{keywordtype}{void} FileManager::resize() \{}
+\DoxyCodeLine{00230     this-\/>capacity *= 2;}
+\DoxyCodeLine{00231     Queue* temp = \textcolor{keyword}{new} Queue[this-\/>capacity];}
+\DoxyCodeLine{00232 }
+\DoxyCodeLine{00233     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < this-\/>count; ++i)\{}
+\DoxyCodeLine{00234         temp[i] = this-\/>queue[i];}
+\DoxyCodeLine{00235     \}}
+\DoxyCodeLine{00236 }
+\DoxyCodeLine{00237     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < this-\/>count; ++i)\{}
+\DoxyCodeLine{00238         this-\/>queue[i].\string~Queue();}
+\DoxyCodeLine{00239     \}}
+\DoxyCodeLine{00240     this-\/>queue-\/>\string~Queue();}
+\DoxyCodeLine{00241 }
+\DoxyCodeLine{00242     this-\/>queue = temp;}
+\DoxyCodeLine{00243 \}}
+
+\end{DoxyCode}

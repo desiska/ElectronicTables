@@ -1,0 +1,76 @@
+\doxysection{Data.\+cpp}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{comment}{//}}
+\DoxyCodeLine{00002 \textcolor{comment}{// Created by Laptop\_HP on 13.6.2022 г..}}
+\DoxyCodeLine{00003 \textcolor{comment}{//}}
+\DoxyCodeLine{00004 }
+\DoxyCodeLine{00005 \textcolor{preprocessor}{\#include "{}Data.h"{}}}
+\DoxyCodeLine{00006 }
+\DoxyCodeLine{00007 \textcolor{comment}{//private method to copy the property from 'other'}}
+\DoxyCodeLine{00008 \textcolor{keywordtype}{void} Data::copy(\textcolor{keyword}{const} Data \&other) \{}
+\DoxyCodeLine{00009     this-\/>data = other.data;}
+\DoxyCodeLine{00010     this-\/>type = other.type;}
+\DoxyCodeLine{00011 \}}
+\DoxyCodeLine{00012 }
+\DoxyCodeLine{00013 \textcolor{comment}{//private method to delete allocated memory}}
+\DoxyCodeLine{00014 \textcolor{keywordtype}{void} Data::clean() \{}
+\DoxyCodeLine{00015     this-\/>data.\string~MyString();}
+\DoxyCodeLine{00016     this-\/>type.\string~MyString();}
+\DoxyCodeLine{00017 \}}
+\DoxyCodeLine{00018 }
+\DoxyCodeLine{00019 \textcolor{comment}{//default constructor}}
+\DoxyCodeLine{00020 Data::Data() \{}
+\DoxyCodeLine{00021 }
+\DoxyCodeLine{00022 \}}
+\DoxyCodeLine{00023 }
+\DoxyCodeLine{00024 \textcolor{comment}{//constructor with two arguments with type MyString}}
+\DoxyCodeLine{00025 Data::Data(MyString data, MyString type) \{}
+\DoxyCodeLine{00026     this-\/>data = data;}
+\DoxyCodeLine{00027     this-\/>type = type;}
+\DoxyCodeLine{00028 \}}
+\DoxyCodeLine{00029 }
+\DoxyCodeLine{00030 \textcolor{comment}{//copy constructor}}
+\DoxyCodeLine{00031 \textcolor{comment}{//invoke private method 'clean'}}
+\DoxyCodeLine{00032 Data::Data(\textcolor{keyword}{const} Data \&other) \{}
+\DoxyCodeLine{00033     this-\/>copy(other);}
+\DoxyCodeLine{00034 \}}
+\DoxyCodeLine{00035 }
+\DoxyCodeLine{00036 \textcolor{comment}{//redefining operator '='}}
+\DoxyCodeLine{00037 \textcolor{comment}{//copy the 'other' object if it is not the same object}}
+\DoxyCodeLine{00038 \textcolor{comment}{//invoke private methods 'clean' and 'copy'}}
+\DoxyCodeLine{00039 Data \&Data::operator=(\textcolor{keyword}{const} Data \&other)\{}
+\DoxyCodeLine{00040     \textcolor{keywordflow}{if}(\textcolor{keyword}{this} != \&other)\{}
+\DoxyCodeLine{00041         this-\/>clean();}
+\DoxyCodeLine{00042         this-\/>copy(other);}
+\DoxyCodeLine{00043     \}}
+\DoxyCodeLine{00044 }
+\DoxyCodeLine{00045     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{00046 \}}
+\DoxyCodeLine{00047 }
+\DoxyCodeLine{00048 \textcolor{comment}{//destructor}}
+\DoxyCodeLine{00049 Data::\string~Data() \{}
+\DoxyCodeLine{00050     this-\/>clean();}
+\DoxyCodeLine{00051 \}}
+\DoxyCodeLine{00052 }
+\DoxyCodeLine{00053 \textcolor{comment}{//return 'data'(MyString)}}
+\DoxyCodeLine{00054 MyString\& Data::getData() \{}
+\DoxyCodeLine{00055     \textcolor{keywordflow}{return} this-\/>data;}
+\DoxyCodeLine{00056 \}}
+\DoxyCodeLine{00057 }
+\DoxyCodeLine{00058 \textcolor{comment}{//return 'type'(MyString)}}
+\DoxyCodeLine{00059 MyString\& Data::getType() \{}
+\DoxyCodeLine{00060     \textcolor{keywordflow}{return} this-\/>type;}
+\DoxyCodeLine{00061 \}}
+\DoxyCodeLine{00062 }
+\DoxyCodeLine{00063 \textcolor{comment}{//setter for data}}
+\DoxyCodeLine{00064 \textcolor{keywordtype}{void} Data::setData(MyString data) \{}
+\DoxyCodeLine{00065     this-\/>data = data;}
+\DoxyCodeLine{00066 \}}
+\DoxyCodeLine{00067 }
+\DoxyCodeLine{00068 \textcolor{comment}{//setter for type}}
+\DoxyCodeLine{00069 \textcolor{keywordtype}{void} Data::setType(MyString type) \{}
+\DoxyCodeLine{00070     this-\/>type = type;}
+\DoxyCodeLine{00071 \}}
+
+\end{DoxyCode}

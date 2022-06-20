@@ -1,0 +1,14 @@
+digraph "FileManager::print"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="FileManager::print",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="Queue::print",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_queue.html#ad841ed3dc8ea54037e11b29eb150627d",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="Data::getData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_data.html#ae2a547e5fd3a2627831b277dfe93f9f2",tooltip=" "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="MyString::toString",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_my_string.html#aa2400085bf862dbeef48016daad48043",tooltip=" "];
+}

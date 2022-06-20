@@ -1,0 +1,180 @@
+\doxysection{File\+Manager Class Reference}
+\label{class_file_manager}\index{FileManager@{FileManager}}
+
+
+{\ttfamily \#include $<$File\+Manager.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ File\+Manager} ()
+\item 
+\textbf{ File\+Manager} (\textbf{ My\+String} \&file\+Name)
+\item 
+\textbf{ File\+Manager} (const \textbf{ File\+Manager} \&other)
+\item 
+\textbf{ File\+Manager} \& \textbf{ operator=} (const \textbf{ File\+Manager} \&other)
+\item 
+\textbf{ $\sim$\+File\+Manager} ()
+\item 
+\textbf{ My\+String} \textbf{ get\+File\+Name} () const
+\item 
+void \textbf{ save} ()
+\item 
+void \textbf{ save\+As} (\textbf{ My\+String} \&new\+File\+Name)
+\item 
+void \textbf{ print} ()
+\item 
+bool \textbf{ edit} (unsigned row, unsigned col, \textbf{ My\+String} \&new\+Data)
+\item 
+void \textbf{ read} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \textbf{ 13} of file \textbf{ File\+Manager.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_file_manager_a8afd512c06be9daf140cc19d71f9b391}} 
+\index{FileManager@{FileManager}!FileManager@{FileManager}}
+\index{FileManager@{FileManager}!FileManager@{FileManager}}
+\doxysubsubsection{FileManager()\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily File\+Manager\+::\+File\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 26} of file \textbf{ File\+Manager.\+cpp}.
+
+\mbox{\label{class_file_manager_a87d357a2b74977be36b45f3563e0e066}} 
+\index{FileManager@{FileManager}!FileManager@{FileManager}}
+\index{FileManager@{FileManager}!FileManager@{FileManager}}
+\doxysubsubsection{FileManager()\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily File\+Manager\+::\+File\+Manager (\begin{DoxyParamCaption}\item[{\textbf{ My\+String} \&}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 33} of file \textbf{ File\+Manager.\+cpp}.
+
+\mbox{\label{class_file_manager_ab4bdd01884c6d6a14e1d7f5166453116}} 
+\index{FileManager@{FileManager}!FileManager@{FileManager}}
+\index{FileManager@{FileManager}!FileManager@{FileManager}}
+\doxysubsubsection{FileManager()\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily File\+Manager\+::\+File\+Manager (\begin{DoxyParamCaption}\item[{const \textbf{ File\+Manager} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ File\+Manager.\+cpp}.
+
+\mbox{\label{class_file_manager_abaed33b5b0c13b8a597db9335a1aacfa}} 
+\index{FileManager@{FileManager}!````~FileManager@{$\sim$FileManager}}
+\index{````~FileManager@{$\sim$FileManager}!FileManager@{FileManager}}
+\doxysubsubsection{$\sim$FileManager()}
+{\footnotesize\ttfamily File\+Manager\+::$\sim$\+File\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 57} of file \textbf{ File\+Manager.\+cpp}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_file_manager_a0257a230c328b0591c6fbfd73d122408}} 
+\index{FileManager@{FileManager}!edit@{edit}}
+\index{edit@{edit}!FileManager@{FileManager}}
+\doxysubsubsection{edit()}
+{\footnotesize\ttfamily bool File\+Manager\+::edit (\begin{DoxyParamCaption}\item[{unsigned}]{row,  }\item[{unsigned}]{col,  }\item[{\textbf{ My\+String} \&}]{new\+Data }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 96} of file \textbf{ File\+Manager.\+cpp}.
+
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\label{class_file_manager_af5796380a4eebf6114bc4c22a5c9d73f}} 
+\index{FileManager@{FileManager}!getFileName@{getFileName}}
+\index{getFileName@{getFileName}!FileManager@{FileManager}}
+\doxysubsubsection{getFileName()}
+{\footnotesize\ttfamily \textbf{ My\+String} File\+Manager\+::get\+File\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \textbf{ 62} of file \textbf{ File\+Manager.\+cpp}.
+
+\mbox{\label{class_file_manager_ac53290a24267b5eb4718302d4f6bb981}} 
+\index{FileManager@{FileManager}!operator=@{operator=}}
+\index{operator=@{operator=}!FileManager@{FileManager}}
+\doxysubsubsection{operator=()}
+{\footnotesize\ttfamily \textbf{ File\+Manager} \& File\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \textbf{ File\+Manager} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 47} of file \textbf{ File\+Manager.\+cpp}.
+
+\mbox{\label{class_file_manager_aeb39f0d1bbbfe4a85f2dbf6bd5b903d9}} 
+\index{FileManager@{FileManager}!print@{print}}
+\index{print@{print}!FileManager@{FileManager}}
+\doxysubsubsection{print()}
+{\footnotesize\ttfamily void File\+Manager\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 89} of file \textbf{ File\+Manager.\+cpp}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\label{class_file_manager_aaacc67423e82375bfa5545e6f91e8b17}} 
+\index{FileManager@{FileManager}!read@{read}}
+\index{read@{read}!FileManager@{FileManager}}
+\doxysubsubsection{read()}
+{\footnotesize\ttfamily void File\+Manager\+::read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 137} of file \textbf{ File\+Manager.\+cpp}.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\label{class_file_manager_a04d535656bc2cc55bf0910724123c107}} 
+\index{FileManager@{FileManager}!save@{save}}
+\index{save@{save}!FileManager@{FileManager}}
+\doxysubsubsection{save()}
+{\footnotesize\ttfamily void File\+Manager\+::save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 68} of file \textbf{ File\+Manager.\+cpp}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\label{class_file_manager_aaa589173abe28fb10508811382d83ae2}} 
+\index{FileManager@{FileManager}!saveAs@{saveAs}}
+\index{saveAs@{saveAs}!FileManager@{FileManager}}
+\doxysubsubsection{saveAs()}
+{\footnotesize\ttfamily void File\+Manager\+::save\+As (\begin{DoxyParamCaption}\item[{\textbf{ My\+String} \&}]{new\+File\+Name }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 74} of file \textbf{ File\+Manager.\+cpp}.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ File\+Manager.\+h}\item 
+\textbf{ File\+Manager.\+cpp}\end{DoxyCompactItemize}

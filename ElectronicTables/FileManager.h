@@ -30,9 +30,9 @@ class FileManager{
 
         MyString getFileName() const;
         void save();
-        void saveAs(MyString newFileName);
+        void saveAs(MyString& newFileName);
         void print();
-        bool edit(unsigned row, unsigned col, MyString newData);
+        bool edit(unsigned row, unsigned col, MyString& newData);
         void read();
 };
 

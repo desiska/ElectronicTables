@@ -23,8 +23,8 @@ class Data{
         Data& operator = (const Data& other);
         ~Data();
 
-        MyString getData();
-        MyString getType();
+        MyString& getData();
+        MyString& getType();
         void setData(MyString data);
         void setType(MyString type);
 };

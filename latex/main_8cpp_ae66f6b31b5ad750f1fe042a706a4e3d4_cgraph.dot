@@ -1,0 +1,58 @@
+digraph "main"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="main",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="Commands::startProgram",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_commands.html#ac73b8b9e0ec59dc9fe32fc67f7aa6626",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="Commands::edit",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_commands.html#a2aed1a7ef61fbdb0d9a2c82ae3d6f712",tooltip=" "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="FileManager::edit",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_file_manager.html#a0257a230c328b0591c6fbfd73d122408",tooltip=" "];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="Queue::getQueue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_queue.html#a58ce005fb06cbc819d7a8c44f7e6423d",tooltip=" "];
+  Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="Queue::getSize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_queue.html#abb5303a5b6c7cfabdc9732352f2fb958",tooltip=" "];
+  Node4 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="MyString::toString",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_my_string.html#aa2400085bf862dbeef48016daad48043",tooltip=" "];
+  Node4 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="Data::~Data",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_data.html#aab31956423290f0d62dcca47ab4d16dd",tooltip=" "];
+  Node2 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="Commands::help",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_commands.html#a5bc6396d21aa3dd52c9d7a1e0ba9071b",tooltip=" "];
+  Node2 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="MyString::isEmpty",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_my_string.html#a6fd24db08eeff0158df07830efcac957",tooltip=" "];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="MyString::getSize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_my_string.html#a73f8110f0fb3d084a87cc2a6ad288737",tooltip=" "];
+  Node2 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="Commands::open",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_commands.html#ae1f7c45c645f0043f8f1e9e8412eae93",tooltip=" "];
+  Node12 -> Node13 [color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="FileManager::read",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_file_manager.html#aaacc67423e82375bfa5545e6f91e8b17",tooltip=" "];
+  Node13 -> Node14 [color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="MyString::add",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_my_string.html#a1d2a59ad2868d0e51dce3af535bc88ab",tooltip=" "];
+  Node14 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node13 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node15 [color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="Commands::print",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_commands.html#acd88bd0f5b1fce14bd2f1431f91a1d0a",tooltip=" "];
+  Node15 -> Node16 [color="midnightblue",fontsize="10",style="solid"];
+  Node16 [label="FileManager::print",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_file_manager.html#aeb39f0d1bbbfe4a85f2dbf6bd5b903d9",tooltip=" "];
+  Node16 -> Node17 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 [label="Queue::print",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_queue.html#ad841ed3dc8ea54037e11b29eb150627d",tooltip=" "];
+  Node17 -> Node18 [color="midnightblue",fontsize="10",style="solid"];
+  Node18 [label="Data::getData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_data.html#ae2a547e5fd3a2627831b277dfe93f9f2",tooltip=" "];
+  Node17 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+  Node19 [label="Commands::save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_commands.html#a2acf83b6cb295cadf9ccd727990a0b27",tooltip=" "];
+  Node19 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node20 [label="FileManager::save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_file_manager.html#a04d535656bc2cc55bf0910724123c107",tooltip=" "];
+  Node20 -> Node21 [color="midnightblue",fontsize="10",style="solid"];
+  Node21 [label="FileManager::saveAs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_file_manager.html#aaa589173abe28fb10508811382d83ae2",tooltip=" "];
+  Node21 -> Node18 [color="midnightblue",fontsize="10",style="solid"];
+  Node21 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node21 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node21 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node22 [color="midnightblue",fontsize="10",style="solid"];
+  Node22 [label="Commands::saveAs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_commands.html#a0cc39a2c797456ab64cd38f8aa47d2de",tooltip=" "];
+  Node22 -> Node21 [color="midnightblue",fontsize="10",style="solid"];
+}

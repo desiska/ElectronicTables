@@ -1,0 +1,168 @@
+\doxysection{Queue Class Reference}
+\label{class_queue}\index{Queue@{Queue}}
+
+
+{\ttfamily \#include $<$Queue.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Queue} ()
+\item 
+\textbf{ Queue} (\textbf{ Data} $\ast$queue, unsigned size)
+\item 
+\textbf{ Queue} (const \textbf{ Queue} \&other)
+\item 
+\textbf{ Queue} \& \textbf{ operator=} (const \textbf{ Queue} \&other)
+\item 
+\textbf{ $\sim$\+Queue} ()
+\item 
+void \textbf{ push} (\textbf{ Data} \&data)
+\item 
+void \textbf{ pop} ()
+\item 
+\textbf{ Data} \textbf{ peek} ()
+\item 
+unsigned \textbf{ get\+Size} ()
+\item 
+\textbf{ Data} $\ast$ \textbf{ get\+Queue} ()
+\item 
+void \textbf{ print} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \textbf{ 12} of file \textbf{ Queue.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_queue_a7cfca3637d57c4a9e37351b3426ffd40}} 
+\index{Queue@{Queue}!Queue@{Queue}}
+\index{Queue@{Queue}!Queue@{Queue}}
+\doxysubsubsection{Queue()\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Queue\+::\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 9} of file \textbf{ Queue.\+cpp}.
+
+\mbox{\label{class_queue_a62690a8b62ead610a9bfadfcf488a373}} 
+\index{Queue@{Queue}!Queue@{Queue}}
+\index{Queue@{Queue}!Queue@{Queue}}
+\doxysubsubsection{Queue()\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Queue\+::\+Queue (\begin{DoxyParamCaption}\item[{\textbf{ Data} $\ast$}]{queue,  }\item[{unsigned}]{size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 16} of file \textbf{ Queue.\+cpp}.
+
+\mbox{\label{class_queue_a0bbebe40091fe70e45a5899801d53544}} 
+\index{Queue@{Queue}!Queue@{Queue}}
+\index{Queue@{Queue}!Queue@{Queue}}
+\doxysubsubsection{Queue()\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Queue\+::\+Queue (\begin{DoxyParamCaption}\item[{const \textbf{ Queue} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 28} of file \textbf{ Queue.\+cpp}.
+
+\mbox{\label{class_queue_a00d119db8fa3050da37746e82cbcf94f}} 
+\index{Queue@{Queue}!````~Queue@{$\sim$Queue}}
+\index{````~Queue@{$\sim$Queue}!Queue@{Queue}}
+\doxysubsubsection{$\sim$Queue()}
+{\footnotesize\ttfamily Queue\+::$\sim$\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 44} of file \textbf{ Queue.\+cpp}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_queue_a58ce005fb06cbc819d7a8c44f7e6423d}} 
+\index{Queue@{Queue}!getQueue@{getQueue}}
+\index{getQueue@{getQueue}!Queue@{Queue}}
+\doxysubsubsection{getQueue()}
+{\footnotesize\ttfamily \textbf{ Data} $\ast$ Queue\+::get\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 119} of file \textbf{ Queue.\+cpp}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\label{class_queue_abb5303a5b6c7cfabdc9732352f2fb958}} 
+\index{Queue@{Queue}!getSize@{getSize}}
+\index{getSize@{getSize}!Queue@{Queue}}
+\doxysubsubsection{getSize()}
+{\footnotesize\ttfamily unsigned Queue\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 114} of file \textbf{ Queue.\+cpp}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\label{class_queue_a8b43516fe16fd4850198739087faba12}} 
+\index{Queue@{Queue}!operator=@{operator=}}
+\index{operator=@{operator=}!Queue@{Queue}}
+\doxysubsubsection{operator=()}
+{\footnotesize\ttfamily \textbf{ Queue} \& Queue\+::operator= (\begin{DoxyParamCaption}\item[{const \textbf{ Queue} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 34} of file \textbf{ Queue.\+cpp}.
+
+\mbox{\label{class_queue_a71610659a8610e3e831a5e81d3427d88}} 
+\index{Queue@{Queue}!peek@{peek}}
+\index{peek@{peek}!Queue@{Queue}}
+\doxysubsubsection{peek()}
+{\footnotesize\ttfamily \textbf{ Data} Queue\+::peek (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 72} of file \textbf{ Queue.\+cpp}.
+
+\mbox{\label{class_queue_adeb9dce2355afa128a237eadc18588d0}} 
+\index{Queue@{Queue}!pop@{pop}}
+\index{pop@{pop}!Queue@{Queue}}
+\doxysubsubsection{pop()}
+{\footnotesize\ttfamily void Queue\+::pop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 58} of file \textbf{ Queue.\+cpp}.
+
+\mbox{\label{class_queue_ad841ed3dc8ea54037e11b29eb150627d}} 
+\index{Queue@{Queue}!print@{print}}
+\index{print@{print}!Queue@{Queue}}
+\doxysubsubsection{print()}
+{\footnotesize\ttfamily void Queue\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 124} of file \textbf{ Queue.\+cpp}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\label{class_queue_a4d446b71f2e294fdfe03d622f8cc1648}} 
+\index{Queue@{Queue}!push@{push}}
+\index{push@{push}!Queue@{Queue}}
+\doxysubsubsection{push()}
+{\footnotesize\ttfamily void Queue\+::push (\begin{DoxyParamCaption}\item[{\textbf{ Data} \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 49} of file \textbf{ Queue.\+cpp}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Queue.\+h}\item 
+\textbf{ Queue.\+cpp}\end{DoxyCompactItemize}

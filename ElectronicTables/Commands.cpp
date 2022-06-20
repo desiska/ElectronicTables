@@ -6,23 +6,28 @@
 #include<iostream>
 #include<fstream>
 
-
+//private method to copy 'other' object property
 void Commands::copy(const Commands &other) {
     this->manager = other.manager;
 }
 
+//private method to delete the allocated memory
 void Commands::clean() {
-    delete &this->manager;
+    this->manager.~FileManager();
 }
 
+//default constructor
 Commands::Commands() {
 
 }
 
+//copy constructor
 Commands::Commands(const Commands &other) {
     this->copy(other);
 }
 
+//redefining operator '='
+//copy the 'other' object if it is not the same object
 Commands &Commands::operator=(const Commands &other) {
     if(this != &other){
         this->clean();
@@ -32,10 +37,13 @@ Commands &Commands::operator=(const Commands &other) {
     return *this;
 }
 
+//destructor
+//invoke private method 'clean'
 Commands::~Commands() {
     this->clean();
 }
 
+//infoke a read method from FileManager class to read a file and save datas in the application
 void Commands::open(MyString fileName) {
     FileManager newManager = FileManager(fileName);
     this->manager = newManager;
@@ -43,14 +51,17 @@ void Commands::open(MyString fileName) {
     this->manager.read();
 }
 
+//invoke save method from FileManager class to save the datas with the updates in the open file
 void Commands::save() {
     this->manager.save();
 }
 
+//invoke saveAs method from FileManager class to save the datas with the updates in the 'newFileName'
 void Commands::saveAs(MyString newFileName) {
     this->manager.saveAs(newFileName);
 }
 
+//print on the console list of application function and information for them
 void Commands::help() {
     std::cout <<"\n\t                           ------HELP------\n\n"
          << "********************************************************************************\n"
@@ -68,10 +79,12 @@ void Commands::help() {
 
 }
 
+//invoke method print from FileManager class to print all datas
 void Commands::print() {
     this->manager.print();
 }
 
+//invoke method edit from FileManager class to update data
 bool Commands::edit(unsigned int row, unsigned int col, MyString newData) {
     bool result = this->manager.edit(row, col, newData);
     if(!result){
@@ -81,6 +94,7 @@ bool Commands::edit(unsigned int row, unsigned int col, MyString newData) {
     return result;
 }
 
+//method to start the application
 void Commands::startProgram() {
     int choose = 8;
     bool canExit = true;

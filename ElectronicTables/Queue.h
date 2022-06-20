@@ -25,7 +25,7 @@ class Queue{
         Queue& operator = (const Queue& other);
         ~Queue();
 
-        void push(Data data);
+        void push(Data& data);
         void pop();
         Data peek();
         unsigned getSize();

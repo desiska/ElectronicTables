@@ -23,7 +23,7 @@ class MyString {
         unsigned getSize() const;
         void print() const;
         void add(const char* str);
-        MyString operator + (const MyString& other);
+        MyString& operator + (const MyString& other);
         char* toString();
         bool isEmpty()const;
 

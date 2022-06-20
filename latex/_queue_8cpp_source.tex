@@ -1,0 +1,135 @@
+\doxysection{Queue.\+cpp}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{comment}{//}}
+\DoxyCodeLine{00002 \textcolor{comment}{// Created by Laptop\_HP on 13.6.2022 г..}}
+\DoxyCodeLine{00003 \textcolor{comment}{//}}
+\DoxyCodeLine{00004 }
+\DoxyCodeLine{00005 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{00006 \textcolor{preprocessor}{\#include "{}Queue.h"{}}}
+\DoxyCodeLine{00007 }
+\DoxyCodeLine{00008 \textcolor{comment}{//default constructor}}
+\DoxyCodeLine{00009 Queue::Queue() \{}
+\DoxyCodeLine{00010     this-\/>size = 0;}
+\DoxyCodeLine{00011     this-\/>capacity = 8;}
+\DoxyCodeLine{00012     this-\/>queue = \textcolor{keyword}{new} Data[this-\/>capacity];}
+\DoxyCodeLine{00013 \}}
+\DoxyCodeLine{00014 }
+\DoxyCodeLine{00015 \textcolor{comment}{//default constructor with two argument -\/ Data and unsigned int}}
+\DoxyCodeLine{00016 Queue::Queue(Data *queue, \textcolor{keywordtype}{unsigned} size) \{}
+\DoxyCodeLine{00017     this-\/>queue = queue;}
+\DoxyCodeLine{00018     this-\/>size = size;}
+\DoxyCodeLine{00019     this-\/>capacity = 8;}
+\DoxyCodeLine{00020 }
+\DoxyCodeLine{00021     \textcolor{keywordflow}{while}(this-\/>size > this-\/>capacity)\{}
+\DoxyCodeLine{00022         this-\/>resize();}
+\DoxyCodeLine{00023     \}}
+\DoxyCodeLine{00024 \}}
+\DoxyCodeLine{00025 }
+\DoxyCodeLine{00026 \textcolor{comment}{//copy constructor}}
+\DoxyCodeLine{00027 \textcolor{comment}{//invoke private method 'copy'}}
+\DoxyCodeLine{00028 Queue::Queue(\textcolor{keyword}{const} Queue \&other) \{}
+\DoxyCodeLine{00029     this-\/>copy(other);}
+\DoxyCodeLine{00030 \}}
+\DoxyCodeLine{00031 }
+\DoxyCodeLine{00032 \textcolor{comment}{//redefining operator '='}}
+\DoxyCodeLine{00033 \textcolor{comment}{//copy the 'other' object if it is not the same object}}
+\DoxyCodeLine{00034 Queue \&Queue::operator=(\textcolor{keyword}{const} Queue \&other) \{}
+\DoxyCodeLine{00035     \textcolor{keywordflow}{if}(\textcolor{keyword}{this} != \&other)\{}
+\DoxyCodeLine{00036         this-\/>clean();}
+\DoxyCodeLine{00037         this-\/>copy(other);}
+\DoxyCodeLine{00038     \}}
+\DoxyCodeLine{00039 }
+\DoxyCodeLine{00040     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{00041 \}}
+\DoxyCodeLine{00042 }
+\DoxyCodeLine{00043 \textcolor{comment}{//destructor}}
+\DoxyCodeLine{00044 Queue::\string~Queue() \{}
+\DoxyCodeLine{00045     this-\/>clean();}
+\DoxyCodeLine{00046 \}}
+\DoxyCodeLine{00047 }
+\DoxyCodeLine{00048 \textcolor{comment}{//add Data in the Data array}}
+\DoxyCodeLine{00049 \textcolor{keywordtype}{void} Queue::push(Data\& data) \{}
+\DoxyCodeLine{00050     \textcolor{keywordflow}{if}(this-\/>size == this-\/>capacity)\{}
+\DoxyCodeLine{00051         this-\/>resize();}
+\DoxyCodeLine{00052     \}}
+\DoxyCodeLine{00053 }
+\DoxyCodeLine{00054     this-\/>queue[this-\/>size++] = data;}
+\DoxyCodeLine{00055 \}}
+\DoxyCodeLine{00056 }
+\DoxyCodeLine{00057 \textcolor{comment}{//remove first element from Data array(the property queue)}}
+\DoxyCodeLine{00058 \textcolor{keywordtype}{void} Queue::pop() \{}
+\DoxyCodeLine{00059     \textcolor{keywordflow}{if}(this-\/>size > 0) \{}
+\DoxyCodeLine{00060         Data temp = this-\/>queue[0];}
+\DoxyCodeLine{00061 }
+\DoxyCodeLine{00062         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < this-\/>size -\/ 1; ++i) \{}
+\DoxyCodeLine{00063             this-\/>queue[i] = this-\/>queue[i + 1];}
+\DoxyCodeLine{00064         \}}
+\DoxyCodeLine{00065 }
+\DoxyCodeLine{00066         \textcolor{keyword}{delete} \&temp;}
+\DoxyCodeLine{00067         -\/-\/this-\/>size;}
+\DoxyCodeLine{00068     \}}
+\DoxyCodeLine{00069 \}}
+\DoxyCodeLine{00070 }
+\DoxyCodeLine{00071 \textcolor{comment}{//return the first element from Data array(property queue)}}
+\DoxyCodeLine{00072 Data Queue::peek() \{}
+\DoxyCodeLine{00073     \textcolor{keywordflow}{return} this-\/>queue[0];}
+\DoxyCodeLine{00074 \}}
+\DoxyCodeLine{00075 }
+\DoxyCodeLine{00076 \textcolor{comment}{//private method to copy the property from 'other' argument}}
+\DoxyCodeLine{00077 \textcolor{keywordtype}{void} Queue::copy(\textcolor{keyword}{const} Queue \&other) \{}
+\DoxyCodeLine{00078     this-\/>capacity = other.capacity;}
+\DoxyCodeLine{00079     this-\/>size = other.size;}
+\DoxyCodeLine{00080     this-\/>queue = \textcolor{keyword}{new} Data[this-\/>capacity];}
+\DoxyCodeLine{00081 }
+\DoxyCodeLine{00082     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < this-\/>size; ++i)\{}
+\DoxyCodeLine{00083         this-\/>queue[i] = other.queue[i];}
+\DoxyCodeLine{00084     \}}
+\DoxyCodeLine{00085 \}}
+\DoxyCodeLine{00086 }
+\DoxyCodeLine{00087 \textcolor{comment}{//private method to delete the allocated memory}}
+\DoxyCodeLine{00088 \textcolor{keywordtype}{void} Queue::clean() \{}
+\DoxyCodeLine{00089     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < this-\/>size; ++i)\{}
+\DoxyCodeLine{00090         this-\/>queue[i].\string~Data();}
+\DoxyCodeLine{00091     \}}
+\DoxyCodeLine{00092 }
+\DoxyCodeLine{00093     this-\/>queue-\/>\string~Data();}
+\DoxyCodeLine{00094 \}}
+\DoxyCodeLine{00095 }
+\DoxyCodeLine{00096 \textcolor{comment}{//resized queue(Data array)}}
+\DoxyCodeLine{00097 \textcolor{keywordtype}{void} Queue::resize() \{}
+\DoxyCodeLine{00098     this-\/>capacity *= 2;}
+\DoxyCodeLine{00099     Data* temp = \textcolor{keyword}{new} Data[this-\/>capacity];}
+\DoxyCodeLine{00100 }
+\DoxyCodeLine{00101     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < this-\/>size; ++i)\{}
+\DoxyCodeLine{00102         temp[i] = this-\/>queue[i];}
+\DoxyCodeLine{00103     \}}
+\DoxyCodeLine{00104 }
+\DoxyCodeLine{00105     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < this-\/>size; ++i)\{}
+\DoxyCodeLine{00106         this-\/>queue[i].\string~Data();}
+\DoxyCodeLine{00107     \}}
+\DoxyCodeLine{00108     this-\/>queue-\/>\string~Data();}
+\DoxyCodeLine{00109 }
+\DoxyCodeLine{00110     this-\/>queue = temp;}
+\DoxyCodeLine{00111 \}}
+\DoxyCodeLine{00112 }
+\DoxyCodeLine{00113 \textcolor{comment}{//return count of the Data from queue(Data array)}}
+\DoxyCodeLine{00114 \textcolor{keywordtype}{unsigned} Queue::getSize() \{}
+\DoxyCodeLine{00115     \textcolor{keywordflow}{return} this-\/>size;}
+\DoxyCodeLine{00116 \}}
+\DoxyCodeLine{00117 }
+\DoxyCodeLine{00118 \textcolor{comment}{//return queue(Data array)}}
+\DoxyCodeLine{00119 Data *Queue::getQueue() \{}
+\DoxyCodeLine{00120     \textcolor{keywordflow}{return} this-\/>queue;}
+\DoxyCodeLine{00121 \}}
+\DoxyCodeLine{00122 }
+\DoxyCodeLine{00123 \textcolor{comment}{//print on the console queue(Data array)}}
+\DoxyCodeLine{00124 \textcolor{keywordtype}{void} Queue::print() \{}
+\DoxyCodeLine{00125     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < this-\/>size; ++i)\{}
+\DoxyCodeLine{00126         std::cout << this-\/>queue[i].getData().toString() << \textcolor{charliteral}{'|'};}
+\DoxyCodeLine{00127     \}}
+\DoxyCodeLine{00128     std::cout << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00129 \}}
+\DoxyCodeLine{00130 }
+
+\end{DoxyCode}

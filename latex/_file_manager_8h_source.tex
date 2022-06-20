@@ -1,0 +1,44 @@
+\doxysection{File\+Manager.\+h}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{comment}{//}}
+\DoxyCodeLine{00002 \textcolor{comment}{// Created by Laptop\_HP on 13.6.2022 г..}}
+\DoxyCodeLine{00003 \textcolor{comment}{//}}
+\DoxyCodeLine{00004 }
+\DoxyCodeLine{00005 \textcolor{preprocessor}{\#include "{}MyString.h"{}}}
+\DoxyCodeLine{00006 \textcolor{preprocessor}{\#include "{}Queue.h"{}}}
+\DoxyCodeLine{00007 \textcolor{preprocessor}{\#include "{}Data.h"{}}}
+\DoxyCodeLine{00008 }
+\DoxyCodeLine{00009 \textcolor{preprocessor}{\#ifndef ELECTRONICTABLES\_FILEMANAGER\_H}}
+\DoxyCodeLine{00010 \textcolor{preprocessor}{\#define ELECTRONICTABLES\_FILEMANAGER\_H}}
+\DoxyCodeLine{00011 }
+\DoxyCodeLine{00012 }
+\DoxyCodeLine{00013 \textcolor{keyword}{class }FileManager\{}
+\DoxyCodeLine{00014     \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015         MyString fileName;}
+\DoxyCodeLine{00016         Queue* queue;}
+\DoxyCodeLine{00017         \textcolor{keywordtype}{unsigned} count;}
+\DoxyCodeLine{00018         \textcolor{keywordtype}{unsigned} capacity;}
+\DoxyCodeLine{00019 }
+\DoxyCodeLine{00020         \textcolor{keywordtype}{void} copy(\textcolor{keyword}{const} FileManager\& other);}
+\DoxyCodeLine{00021         \textcolor{keywordtype}{void} clean();}
+\DoxyCodeLine{00022         \textcolor{keywordtype}{void} resize();}
+\DoxyCodeLine{00023 }
+\DoxyCodeLine{00024     \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025         FileManager();}
+\DoxyCodeLine{00026         FileManager(MyString\& fileName);}
+\DoxyCodeLine{00027         FileManager(\textcolor{keyword}{const} FileManager\& other);}
+\DoxyCodeLine{00028         FileManager\& operator = (\textcolor{keyword}{const} FileManager\& other);}
+\DoxyCodeLine{00029         \string~FileManager();}
+\DoxyCodeLine{00030 }
+\DoxyCodeLine{00031         MyString getFileName() \textcolor{keyword}{const};}
+\DoxyCodeLine{00032         \textcolor{keywordtype}{void} save();}
+\DoxyCodeLine{00033         \textcolor{keywordtype}{void} saveAs(MyString\& newFileName);}
+\DoxyCodeLine{00034         \textcolor{keywordtype}{void} print();}
+\DoxyCodeLine{00035         \textcolor{keywordtype}{bool} edit(\textcolor{keywordtype}{unsigned} row, \textcolor{keywordtype}{unsigned} col, MyString\& newData);}
+\DoxyCodeLine{00036         \textcolor{keywordtype}{void} read();}
+\DoxyCodeLine{00037 \};}
+\DoxyCodeLine{00038 }
+\DoxyCodeLine{00039 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//ELECTRONICTABLES\_FILEMANAGER\_H}}
+
+\end{DoxyCode}

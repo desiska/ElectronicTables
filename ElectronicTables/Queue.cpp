@@ -5,12 +5,14 @@
 #include <iostream>
 #include "Queue.h"
 
+//default constructor
 Queue::Queue() {
     this->size = 0;
     this->capacity = 8;
     this->queue = new Data[this->capacity];
 }
 
+//default constructor with two argument - Data and unsigned int
 Queue::Queue(Data *queue, unsigned size) {
     this->queue = queue;
     this->size = size;
@@ -21,10 +23,14 @@ Queue::Queue(Data *queue, unsigned size) {
     }
 }
 
+//copy constructor
+//invoke private method 'copy'
 Queue::Queue(const Queue &other) {
     this->copy(other);
 }
 
+//redefining operator '='
+//copy the 'other' object if it is not the same object
 Queue &Queue::operator=(const Queue &other) {
     if(this != &other){
         this->clean();
@@ -34,11 +40,13 @@ Queue &Queue::operator=(const Queue &other) {
     return *this;
 }
 
+//destructor
 Queue::~Queue() {
     this->clean();
 }
 
-void Queue::push(Data data) {
+//add Data in the Data array
+void Queue::push(Data& data) {
     if(this->size == this->capacity){
         this->resize();
     }
@@ -46,6 +54,7 @@ void Queue::push(Data data) {
     this->queue[this->size++] = data;
 }
 
+//remove first element from Data array(the property queue)
 void Queue::pop() {
     if(this->size > 0) {
         Data temp = this->queue[0];
@@ -59,10 +68,12 @@ void Queue::pop() {
     }
 }
 
+//return the first element from Data array(property queue)
 Data Queue::peek() {
     return this->queue[0];
 }
 
+//private method to copy the property from 'other' argument
 void Queue::copy(const Queue &other) {
     this->capacity = other.capacity;
     this->size = other.size;
@@ -73,6 +84,7 @@ void Queue::copy(const Queue &other) {
     }
 }
 
+//private method to delete the allocated memory
 void Queue::clean() {
     for(int i = 0; i < this->size; ++i){
         this->queue[i].~Data();
@@ -81,6 +93,7 @@ void Queue::clean() {
     this->queue->~Data();
 }
 
+//resized queue(Data array)
 void Queue::resize() {
     this->capacity *= 2;
     Data* temp = new Data[this->capacity];
@@ -89,19 +102,25 @@ void Queue::resize() {
         temp[i] = this->queue[i];
     }
 
-    delete this->queue;
+    for(int i = 0; i < this->size; ++i){
+        this->queue[i].~Data();
+    }
+    this->queue->~Data();
 
     this->queue = temp;
 }
 
+//return count of the Data from queue(Data array)
 unsigned Queue::getSize() {
     return this->size;
 }
 
+//return queue(Data array)
 Data *Queue::getQueue() {
     return this->queue;
 }
 
+//print on the console queue(Data array)
 void Queue::print() {
     for(int i = 0; i < this->size; ++i){
         std::cout << this->queue[i].getData().toString() << '|';

@@ -1,0 +1,20 @@
+digraph "Commands::save"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Commands::save",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="FileManager::save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_file_manager.html#a04d535656bc2cc55bf0910724123c107",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="FileManager::saveAs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_file_manager.html#aaa589173abe28fb10508811382d83ae2",tooltip=" "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="Data::getData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_data.html#ae2a547e5fd3a2627831b277dfe93f9f2",tooltip=" "];
+  Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="Queue::getQueue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_queue.html#a58ce005fb06cbc819d7a8c44f7e6423d",tooltip=" "];
+  Node3 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="Queue::getSize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_queue.html#abb5303a5b6c7cfabdc9732352f2fb958",tooltip=" "];
+  Node3 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="MyString::toString",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_my_string.html#aa2400085bf862dbeef48016daad48043",tooltip=" "];
+}

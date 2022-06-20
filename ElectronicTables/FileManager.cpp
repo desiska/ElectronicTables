@@ -5,11 +5,13 @@
 #include "FileManager.h"
 #include<fstream>
 
+//private method to copy 'other' property
 void FileManager::copy(const FileManager &other) {
     this->fileName = other.fileName;
     this->queue = other.queue;
 }
 
+//private method to delete the allocated memory
 void FileManager::clean() {
     this->fileName.~MyString();
 
@@ -20,12 +22,14 @@ void FileManager::clean() {
     this->queue->~Queue();
 }
 
+//default constructor
 FileManager::FileManager() {
     this->count = 0;
     this->capacity = 8;
     this->queue = new Queue[this->capacity];
 }
 
+//constructor with one property(MyString)
 FileManager::FileManager(MyString& fileName) {
     this->fileName = fileName;
     this->count = 0;
@@ -33,10 +37,13 @@ FileManager::FileManager(MyString& fileName) {
     this->queue = new Queue[this->capacity];
 }
 
+//copy constructor
 FileManager::FileManager(const FileManager &other) {
     this->copy(other);
 }
 
+//redefining operator '='
+//copy the 'other' object if it is not the same object
 FileManager &FileManager::operator=(const FileManager &other) {
     if(this != &other){
         this->clean();
@@ -46,19 +53,25 @@ FileManager &FileManager::operator=(const FileManager &other) {
     return *this;
 }
 
+//destructor
 FileManager::~FileManager() {
     this->clean();
 }
 
+//return 'fileName'(MyString)
 MyString FileManager::getFileName() const {
     return this->fileName;
 }
 
+//save the datas with the updates in the open file
+//invoke method saveAs
 void FileManager::save() {
     this->saveAs(this->fileName);
 }
 
-void FileManager::saveAs(MyString newFileName) {
+//argument newFileName is the URL of the file where has to save datas
+//save the datas with the updates in the 'newFileName'
+void FileManager::saveAs(MyString& newFileName) {
     std::ofstream out;
     out.open(newFileName.toString());
     if(out){
@@ -72,46 +85,55 @@ void FileManager::saveAs(MyString newFileName) {
     out.close();
 }
 
+//print on the console data
 void FileManager::print() {
     for(int i = 0; i < this->count; ++i){
         this->queue[i].print();
     }
 }
 
-bool FileManager::edit(unsigned row, unsigned col, MyString newData) {
+//update datas
+bool FileManager::edit(unsigned row, unsigned col, MyString& newData) {
     if(this->queue->getSize() < row && this->queue[row - 1].getSize() < col){
         return false;
     }
 
-    delete &this->queue[row - 1].getQueue()[col - 1];
+    this->queue[row - 1].getQueue()[col - 1].~Data();
 
-    char* string = newData.toString();
-
-    if(string[0] == '='){
-        this->queue[row - 1].getQueue()[col - 1] = Data(newData, MyString("Formula"));
+    if(newData.toString()[0] == '='){
+        Data data(newData, MyString("Formula"));
+        this->queue[row - 1].getQueue()[col - 1] = data;
+        data.~Data();
     }
-    else if (string[0] == '\"'){
-        this->queue[row - 1].getQueue()[col - 1] = Data(newData, MyString("CharArray"));
+    else if (newData.toString()[0] == '\"'){
+        Data data(newData, MyString("CharArray"));
+        this->queue[row - 1].getQueue()[col - 1] = data;
+        data.~Data();
     }
     else{
         bool isDouble = false;
-        for(int i = 0; !isDouble && string[i] != '\0'; ++i){
-            if(string[i] == '.'){
+        for(int i = 0; !isDouble && newData.toString()[i] != '\0'; ++i){
+            if(newData.toString()[i] == '.'){
                 isDouble = true;
             }
         }
 
         if(isDouble){
-            this->queue[row - 1].getQueue()[col - 1] = Data(newData, MyString("Double"));
+            Data data(newData, MyString("Double"));
+            this->queue[row - 1].getQueue()[col - 1] = data;
+            data.~Data();
         }
         else{
-            this->queue[row - 1].getQueue()[col - 1] = Data(newData, MyString("Integer"));
+            Data data(newData, MyString("Integer"));
+            this->queue[row - 1].getQueue()[col - 1] = data;
+            data.~Data();
         }
     }
 
     return true;
 }
 
+//read the information from file and save them in the application
 void FileManager::read() {
     std::ifstream in;
     in.open(this->fileName.toString());
@@ -203,6 +225,7 @@ void FileManager::read() {
     in.close();
 }
 
+//resized queue(Queue array)
 void FileManager::resize() {
     this->capacity *= 2;
     Queue* temp = new Queue[this->capacity];
@@ -212,9 +235,9 @@ void FileManager::resize() {
     }
 
     for(int i = 0; i < this->count; ++i){
-        delete &this->queue[i];
+        this->queue[i].~Queue();
     }
-    delete this->queue;
+    this->queue->~Queue();
 
     this->queue = temp;
 }

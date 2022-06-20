@@ -1,0 +1,26 @@
+digraph "Queue::getSize"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="Queue::getSize",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="FileManager::edit",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_file_manager.html#a0257a230c328b0591c6fbfd73d122408",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Commands::edit",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_commands.html#a2aed1a7ef61fbdb0d9a2c82ae3d6f712",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Commands::startProgram",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_commands.html#ac73b8b9e0ec59dc9fe32fc67f7aa6626",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="FileManager::saveAs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_file_manager.html#aaa589173abe28fb10508811382d83ae2",tooltip=" "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="FileManager::save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_file_manager.html#a04d535656bc2cc55bf0910724123c107",tooltip=" "];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Commands::save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_commands.html#a2acf83b6cb295cadf9ccd727990a0b27",tooltip=" "];
+  Node8 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Commands::saveAs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_commands.html#a0cc39a2c797456ab64cd38f8aa47d2de",tooltip=" "];
+  Node9 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}
